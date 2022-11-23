@@ -11,7 +11,20 @@ void
 main()
 {
   if(cpuid() == 0){
-    consoleinit();
+            consoleinit();
+
+        printfinit();
+
+        printf("\n");
+
+        printf("xv6 kernel is booting\n''''''''''''''\n");
+
+        kinit();         // physical mem allocator
+
+        printf("xv6 free mem : %d\n''''''''''''''\n", kfreemem());
+
+        printf("\n");
+    
     printfinit();
     printf("\n");
     printf("xv6 kernel is booting\n");
