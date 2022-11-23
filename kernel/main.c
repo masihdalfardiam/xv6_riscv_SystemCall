@@ -25,6 +25,9 @@ main()
 
         printf("\n");
     
+        printf("\n""""""""""""""""""freeeeeeeeeeeeeeeeeeee""""""""""""""""\n");
+        printf("%d",kfreemem());
+    
     printfinit();
     printf("\n");
     printf("xv6 kernel is booting\n");
