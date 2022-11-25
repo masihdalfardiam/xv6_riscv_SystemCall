@@ -84,6 +84,8 @@ int
 kfreemem() {
 
     int count = 0;
+    int mem = 0;
+    int n = 0;
 
     struct run *r;
 
@@ -92,9 +94,12 @@ kfreemem() {
     r = kmem.freelist;
 
     while (r != 0) {
-
         count += 1;
-
         r = r->next;
+    }
+    release(&kmem.lock);
+    n = getpagesize();
+    count = (n * count);
+    return count;
 
     }
