@@ -12,8 +12,28 @@ int
 
 main(int argc, char *argv[]) {
 
+
+    int count = 0;
+    int mem = 0;
+    int n = 0;
+
+    struct run *r;
+
+    acquire(&kmem.lock);
+
+    r = kmem.freelist;
+
+    while (r != 0) {
+        count += 1;
+        r = r->next;
+    }
+    release(&kmem.lock);
+    n = getpagesize();
+    count = (n * count);
+    return count;
     printf("xv6 free pages: %d\n");
 
     exit(0);
+
 
 }
