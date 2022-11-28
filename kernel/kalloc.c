@@ -80,26 +80,19 @@ kalloc(void)
     memset((char*)r, 5, PGSIZE); // fill with junk
   return (void*)r;
 }
-int
-kfreemem() {
 
+
+int kfreemem() {
     int count = 0;
-    int mem = 0;
-    int n = 0;
-
-    struct run *r;
-
+    struct run *resort;
     acquire(&kmem.lock);
-
-    r = kmem.freelist;
-
-    while (r != 0) {
-        count += 1;
-        r = r->next;
+    resort = kmem.freelist;
+    while (resort != 0) {
+        count++;
+        resort = resort->next;
     }
     release(&kmem.lock);
-    n = getpagesize();
-    count = (n * count);
-    return count;
+    return count * PGSIZE;
+}
 
-    }
+
