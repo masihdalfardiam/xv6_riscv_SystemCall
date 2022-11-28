@@ -1,5 +1,6 @@
-K=kernel
 U=user
+K=kernel
+
 
 OBJS = \
   $K/entry.o \
